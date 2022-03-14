@@ -1,0 +1,8 @@
+/resource/*
+/sound/
+tools/w3x2lni/*
+scripts/base/system/finite_state
+(ppk).lua
+/*.w3x
+!/.w3x
+

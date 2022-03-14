@@ -1,0 +1,10 @@
+{
+    "Lua.diagnostics.globals": [
+        "yo",
+        "game",
+    ],
+    "Lua.workspace.library": [
+        "${3rd}/Jass/library"
+    ],
+    "Lua.workspace.checkThirdParty": false
+}

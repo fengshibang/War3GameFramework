@@ -5,6 +5,7 @@ yo.ini.state["熊王-天崩地裂"] = function(_ai)
     local _state = yo.state.new(_ai)
     local _unit = _ai._owner
 
+    -- 定义充能状态
     local charge = yo.state.new_aciton()
     charge.anim = "charge"
     charge.time = 1.2
@@ -28,6 +29,7 @@ yo.ini.state["熊王-天崩地裂"] = function(_ai)
         end)
     end
 
+    -- 定义跳跃状态
     local jump = yo.state.new_aciton()
     jump.anim = "stand"
     jump.jump_high = 700
@@ -51,6 +53,7 @@ yo.ini.state["熊王-天崩地裂"] = function(_ai)
         mover:launch()
     end
 
+    -- 定义击飞状态
     local hit_fly = yo.state.new_aciton()
     hit_fly.anim = "stand"
     hit_fly.jump_high = 500
@@ -65,6 +68,7 @@ yo.ini.state["熊王-天崩地裂"] = function(_ai)
         japi.EXSetEffectSize(eff, 2)
 
         local select = selector:in_range(center, 1000):is_not(_unit):get()
+        if select == nil then return end
 
         for _, selUnit in ipairs(select) do
             -- print("造成伤害")
@@ -102,8 +106,12 @@ yo.ini.state["熊王-天崩地裂"] = function(_ai)
 
     end
 
+    -- 定义流程(充能完毕后执行跳跃)
     function charge:on_finish() jump:on_action() end
+    -- 定义流程(跳跃完毕后执行击飞)
     function jump:on_finish() hit_fly:on_action() end
+
+    -- 定义流程(击飞完毕后再次击飞,重复执行两次)
     local loop = 0
     function hit_fly:on_finish()
         loop = loop + 1
@@ -115,6 +123,7 @@ yo.ini.state["熊王-天崩地裂"] = function(_ai)
         end
     end
 
+    -- 定义流程(此状态的入口状态为充能状态)
     function _state:on_enter()
         charge:on_action()
     end

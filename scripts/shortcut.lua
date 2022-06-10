@@ -8,7 +8,7 @@ local event = require "base.system.event"
 local input = require "base.system.input"
 local mover = require "base.system.mover"
 local timer = require "base.system.timer"
-local state = require "system.behaviour_tree.state"
+local state = require "base.system.behaviour_tree.state"
 
 local struct = require "base.define.struct"
 

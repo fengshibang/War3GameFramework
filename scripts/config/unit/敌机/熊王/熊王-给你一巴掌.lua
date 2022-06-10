@@ -24,7 +24,6 @@ yo.ini.state["熊王-给你一巴掌"] = function(_ai)
             damage.critType = "计算暴击"
             damage.value = 1.2 * _unit:get("攻击力")
             damage.attacker = _unit
-            print("熊王拍击")
 
             local center = _unit:center() - {_unit:get_facing(), self.devia}
 

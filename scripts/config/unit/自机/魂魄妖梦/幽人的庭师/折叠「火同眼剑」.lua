@@ -49,7 +49,7 @@ yo.ini.ability["折叠「火同眼剑」"] = function(str_id)
         block.action = function(data)
 
             if not self.block_type:find(data.damageType) then return end
-            if not (data.defencer == block._attach) then return end
+            if not (data.defencer == block._attach) then return end  
 
             data.valid = false
 
@@ -78,6 +78,8 @@ yo.ini.ability["折叠「火同眼剑」"] = function(str_id)
 
         attack.action = function(data)
             if (data.defencer == attack._attach) then
+                data.defencer:remove_buff(attack)
+
                 local damage = setmetatable({}, yo.struct.damage)
                 damage.damageType = mt.damage_type
                 damage.attacker = data.defencer
@@ -93,6 +95,7 @@ yo.ini.ability["折叠「火同眼剑」"] = function(str_id)
         end
 
         function attack:on_remove()
+            print("移除buff")
             yo.event:remove(yo.event.E_Damage.damageFinish, self.action)
         end
 

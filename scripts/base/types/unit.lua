@@ -8,7 +8,7 @@ local point = require "base.abstract.point"
 local rect = require "base.abstract.rect"
 local event = require "base.system.event"
 local player = require "base.types.player"
-local AI = require "base.system.AI"
+local AI = require "base.system.behaviour_tree.Ai"
 
 local unit = {}
 
@@ -647,6 +647,7 @@ function mt:remove_buff(_buff)
     if not b then return end
     _buff._isremoved = true
     _buff._attach = nil
+    _buff:on_remove()
     self._buffs[_buff._name] = nil
 end
 

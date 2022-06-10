@@ -14,11 +14,11 @@ local mt = {
 }
 mt.__index = mt
 
-function yo.state.new(_ai)
+function state.new(_ai)
     local t = setmetatable({_ai = _ai}, mt)
     return t
 end
-function yo.state.new_aciton(data)
+function state.new_aciton(data)
     local t = setmetatable(data or {}, action)
     return t
 end

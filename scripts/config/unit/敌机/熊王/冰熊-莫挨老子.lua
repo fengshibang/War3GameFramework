@@ -7,7 +7,7 @@ yo.ini.state["冰熊-莫挨老子"] = function(_ai)
     local event_action = function(data)
         if data.defencer == _unit then
             -- 创建特效
-            print("创建特效")
+            -- print("创建特效")
 
             -- 造成伤害
             local damage = setmetatable({}, yo.struct.damage)
@@ -18,6 +18,7 @@ yo.ini.state["冰熊-莫挨老子"] = function(_ai)
             damage.value = 1.2 * _unit:get("攻击力")
             damage.value = 100
             yo.battle.doDamage(damage)
+            print("莫挨老子反击")
 
         end
     end

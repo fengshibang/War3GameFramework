@@ -52,4 +52,10 @@ if not game.release then
 end
 
 -- 初始化本地脚本
-require 'main'
+local function init()
+	require 'main'
+end
+
+xpcall(init , function(msg)
+	 print(msg, '\n', debug.traceback()) 
+	end)
